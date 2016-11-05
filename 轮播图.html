@@ -39,6 +39,13 @@
             cursor: pointer;
 
         }
+        #content img{
+            display: none;
+
+        }
+        #content img.selected{
+            display: block;
+        }
         #allow span{
             float: left;
             width: 20px;
@@ -77,25 +84,59 @@
 
     </div>
     <div id="allow">
-        <span class="selected"> &lt;</span>
-        <span> &gt; </span>
+        <span id="prev"> &lt;</span>
+        <span id="next"> &gt; </span>
     </div>
 </div>
 <script>
+    var oContainer=document.getElementById('container');
     var oTab=document.getElementById('tab');
     var aLi=oTab.getElementsByTagName('li');
     var oContent=document.getElementById('content');
     var aImg=oContent.getElementsByTagName('img');
-    for(var i=0;i<aLi.length;i++){/*这个循环是为了给每个i赋予划入事件*/
-        aLi[i].index=i;
-        aLi[i].onmouseover=function(){/*此处for循环已经结束，i=4*/
+    var oPrev=document.getElementById('prev');
+    var oNext=document.getElementById('next');
+    var iNow=0;
+    for(var i=0;i<aLi.length;i++) {/*这个循环是为了给每个i赋予划入事件*/
+        aLi[i].index = i;
+        aLi[i].onmouseover = function () {/*此处for循环已经结束，i=4*/
+            changeImg(this.index);
+            iNow = this.index;
+        }
+    }
+         oNext.onclick=function() {
+             iNow++;
+             if (iNow == aLi.length) {
+                 iNow = 0;
+             }
+             changeImg(iNow);
+         }
+    oPrev.onclick=function() {
+        iNow--;
+        if (iNow == -1) {
+            iNow = aLi.length - 1;
+        }
+        changeImg(iNow);
+    }
+    function changeImg(a){
             for(var i=0;i<aLi.length;i++){
                 aLi[i].className='';
                 aImg[i].className='';
             }
-            this.className='selected';
-            aImg[this.index]='selected';
+            aLi[a].className='selected';
+            aImg[a].className='selected';
         }
+    var timer;
+    timer=setInterval(function(){
+        oNext.onclick();
+    },1000);
+    oContainer.onmouseover=function(){
+        clearInterval(timer);
+    }
+    oContainer.onmouseout=function(){
+        timer=setInterval(function(){
+            oNext.onclick();
+        },1000)
     }
 </script>
 </body>
