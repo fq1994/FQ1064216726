@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #click{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            border-radius: 50%;
+            margin: 100px auto;
+            position: relative;
+        }
+        #dial li {
+            width: 2px;
+            height: 4px;
+            background: #000;
+            position: absolute;
+            left: 99px;
+            top: 0;
+            -webkit-transform-origin: center 100px;
+
+        }
+        #dial li:nth-child(5n+1){
+             height: 8px;
+        }
+         #hour,#second,#minute{
+             -webkit-transform-origin: center bottom;
+         }
+        #hour{
+              width: 6px;
+              height: 30px;
+              background: #000;
+              position: absolute;
+              left: 97px;
+              top: 70px;
+          }
+        #minute{
+            width: 4px;
+            height: 50px;
+            background: yellow;
+            position: absolute;
+            left: 98px;
+            top: 50px;
+        }
+        #second{
+            width: 2px;
+            height: 70px;
+            background: red;
+            position: absolute;
+            left: 99px;
+            top: 30px;
+        }
+
+    </style>
+</head>
+<body>
+  <div id="click">
+      <ul id="dial">
+
+      </ul>
+      <div id="hour"></div>
+      <div id="minute"></div>
+      <div id="second"></div>
+  </div>
+  <script>
+      var oDial=document.getElementById('dial');
+      var html='';
+      var oSecond=document.getElementById('second');
+      var oMinute=document.getElementById('minute');
+      var oHour=document.getElementById('hour');
+        for(var i=0;i<60;i++){
+          html+="<li style='-webkit-transform:rotate("+i*6+"deg)'></li>"
+        }
+         oDial.innerHTML=html;
+
+
+      function run(){
+          var date=new Date();
+          var second=date.getSeconds();
+          var minute=date.getMinutes()+second/60;
+          var hour=date.getHours()+minute/60;
+          oSecond.style.WebkitTransform='rotate('+second*6+'deg)';
+          oMinute.style.WebkitTransform='rotate('+minute*6+'deg)';
+          oHour.style.WebkitTransform='rotate('+hour*30+'deg)';
+
+      }
+      run();
+      setInterval(run,1000)
+
+  </script>
+</body>
+</html>
