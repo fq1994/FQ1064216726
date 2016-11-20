@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>旋转的照片墙</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        html{
+            width: 100%;
+            height: 100%;
+        }
+        body{
+            width: 100%;
+            height: 100%;
+        }
+        #container{
+            width: 100%;
+            height: 100%;
+            background: url('img/bg.jpg');
+            position: relative;
+        }
+        #container .img{
+            width: 125px;
+            height: 125px;
+            border:5px solid #fff;
+            position: absolute;
+            left: -150px;
+            top: -150px;
+            -webkit-transition:all 2s ease-in-out  ;
+        }
+        #container .img span{
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            opacity: 0;
+            -webkit-transition:opacity 1.5s ease-in-out ;
+        }
+        #next,#prev{
+            width: 50px;
+            height: 80px;
+            position: absolute;
+            top:50%;
+            margin-top: -40px;
+            display: none;
+        }
+        #prev{
+            left: 0;
+            background: url(img/prev.png) center no-repeat #fff;
+        }
+        #next{
+            right: 0;
+            background: url("img/next.png") center no-repeat #fff;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+
+</div>
+<div id="prev"></div>
+<div id="next"></div>
+<script>
+    var oContainer=document.getElementById('container');
+    var oPrev=document.getElementById('prev');
+    var oNext=document.getElementById('next');
+    var sum=0;
+    var iNow=0;
+    for(var i=0;i<24;i++){
+        var oImg=new Image();
+        oImg.onload=function(){
+            sum++;
+            if(sum==48){
+                loadSuccess();
+            }
+        };
+        oImg.src='img/'+(1+i)+'.jpg';
+    }
+    for(var i=0;i<24;i++){
+        var oImg=new Image();
+        oImg.onload=function(){
+            sum++;
+            if(sum==48){
+                loadSuccess();
+            }
+        };
+        oImg.src='img/thumbs/'+(1+i)+'.jpg';
+    }
+    var lineWidth=(oContainer.offsetWidth-750)/7;
+    var rowWidth=(oContainer.offsetHeight-500)/5;
+    var index=0;
+    function loadSuccess(){
+        for(var i=0;i<4;i++){
+            for(var j=0;j<6;j++){
+                var oDiv=document.createElement('div');
+                oDiv.className='img';
+                oDiv.innerHTML="<span></span>";
+                oDiv.lineRow={
+                    line:i,
+                    row:j
+                };
+                oDiv.imgIndex=index;
+
+                oDiv.style.background='url(img/thumbs/'+(index+1)+'.jpg)';
+                oDiv.pos={
+                    left:lineWidth+j*(lineWidth+125),
+                    top:rowWidth+i*(rowWidth+125)
+                };
+                oDiv.onclick=fn;
+                oContainer.appendChild(oDiv);
+                index++;
+            }
+
+        }
+        var aDiv=oContainer.getElementsByTagName('div');
+        var timer=setInterval(function(){
+            index--;
+            aDiv[index].style.left=aDiv[index].pos.left+'px';
+            aDiv[index].style.top=aDiv[index].pos.top+'px';
+            aDiv[index].style.WebkitTransform='rotate('+(Math.random()*40-20)+'deg)';
+            if(index==0){
+                clearInterval(timer);
+            }
+        },100);
+        var bFlag=true;
+         function fn(){
+            var width=(oContainer.offsetWidth-750)/2;
+             var height=(oContainer.offsetHeight-500)/2;
+
+             if(bFlag){ for(var i=0;i<24;i++){
+                 aDiv[i].style.left=aDiv[i].lineRow.row*125+width+'px';
+                 aDiv[i].style.top=aDiv[i].lineRow.line*125+height+'px';
+                 aDiv[i].style.WebkitTransform='rotate(0deg)';
+                 aDiv[i].style.border='1px solid #fff';
+                 var oSpan=aDiv[i].getElementsByTagName('span')[0];
+                 var spanLeft=-aDiv[i].lineRow.row*125;
+                 var spanTop=-aDiv[i].lineRow.line*125;
+                 oSpan.style.opacity=1;
+                 oSpan.style.background='url(img/'+(this.imgIndex+1)+'.jpg) '+spanLeft+'px '+spanTop+'px no-repeat';
+
+             }
+                 oNext.style.display='block';
+                 oPrev.style.display='block';
+                 iNow=this.imgIndex;
+             }else{
+                  for(var i=0;i<24;i++){
+                     aDiv[i].style.left=aDiv[i].pos.left+'px';
+                     aDiv[i].style.top=aDiv[i].pos.top+'px';
+                     aDiv[i].style.WebkitTransform='rotate('+(Math.random()*40-20)+'deg)';
+                     aDiv[i].style.border='5px solid #fff';
+                      var oSpan=aDiv[i].getElementsByTagName('span')[0];
+                      oSpan.style.opacity=0;
+                 }
+                 oNext.style.display='none';
+                 oPrev.style.display='none';
+             }
+                bFlag=!bFlag;
+         }
+
+        oNext.onclick=oPrev.onclick=function(){
+            if(this==oNext){
+                iNow++;
+                if(iNow==aDiv.length){
+                    iNow=0;
+                }
+            }else{
+                iNow--;
+                if(iNow==-1){
+                    iNow=aDiv.length-1;
+                }
+            }
+            var arr=[];
+            for(var i=0;i<24;i++){
+                arr.push(i);
+            }
+
+            arr.sort();
+            console.log(arr.sort(function(a,b){
+                return Math.random()-0.5;
+            }));
+
+            var timer2=setInterval(function(){
+                var random=arr.pop();
+                    var oSpan=aDiv[random].getElementsByTagName('span')[0];
+                    var spanLeft=-aDiv[random].lineRow.row*125;
+                    var spanTop=-aDiv[random].lineRow.line*125;
+                    oSpan.style.background='url(img/'+(iNow+1)+'.jpg) '+spanLeft+'px '+spanTop+'px no-repeat';
+                    if(arr.length==0){
+                        clearInterval(timer2)
+                    }
+            },30)
+
+
+        }
+    }
+
+</script>
+</body>
+</html>
