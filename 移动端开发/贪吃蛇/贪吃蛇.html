@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #container{
+            width: 1000px;
+            height: 600px;
+            position: absolute;
+            left: 50%;
+            margin-left: -500px;
+            background: orange;
+            border: 2px solid #000000;
+        }
+        #ground{
+            width: 1000px;
+            height: 500px;
+            /*background: #ccc;*/
+            /*position: absolute;*/
+            /*left: 50%;*/
+            /*margin-left: -500px;*/
+            /*/!*border: 2px solid #00ff00;*!/*/
+
+        }
+        #content{
+            width: 1000px;
+            height: 100px;
+            background: #ffffee;
+            position: relative;
+        }
+       #btns{
+           position: absolute;
+           right: 0;
+           top: 50%;
+           margin-top: -8px;
+       }
+
+      p{
+          padding-top: 41px;
+          font-weight: 900;
+      }
+      .block{
+          width: 20px;
+          height:20px;
+          background: orange;
+          float: left;
+      }
+        .snake-block{
+            width: 20px;
+            height: 20px;
+            background: red;
+            float: left;
+            position: absolute;
+        }
+        .food-block{
+            width: 20px;
+            height: 20px;
+            background: blue;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="ground">
+    </div>
+    <div id="content">
+        <p>javascript贪吃蛇by唯创网讯</p>
+        <div id="btns">
+            <button id="start">开始</button>
+            <button id="pause">暂停</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    var oGround=document.getElementById('ground');
+    var oStart=document.getElementById('start');
+    var oPause=document.getElementById('pause');
+    var direction='right';
+    var bDie=false;
+    var bPause=false;
+    oStart.onclick=function(){
+        if(bDie){
+            oGround.removeChild(oFdiv);
+            for (i=0;i<snakeBody.length;i++){
+                oGround.removeChild(snakeBody[i]);
+            }
+            snakeBody=[];
+            direction='right';
+            clearInterval(timer);
+            createFood();
+            createSnake();
+            bDie=false;
+             timer=setInterval(move,200)
+        }else{
+            if(bPause){
+                bPause=false;
+                timer = setInterval(move,200);
+            }
+        }
+    };
+    oPause.onclick=function(){
+        bPause=true;
+        clearInterval(timer)
+    };
+    for(var i=0;i<50*25;i++){
+        var oGdiv=document.createElement('div');
+        oGdiv.className='block';
+        oGround.appendChild(oGdiv)
+    }
+    var snakeBody=[];
+    function createSnake(){
+        for(var i=0;i<3;i++){
+            var oSdiv=document.createElement('div');
+            oSdiv.className='snake-block';
+            snakeBody.push(oSdiv);
+            oSdiv.style.top='60px';
+            oSdiv.style.left=60-i*20+'px';
+            oGround.appendChild(oSdiv)
+
+        }
+    }
+   createSnake();
+    var oFdiv=null;
+    function createFood(){
+        var bFlag=false;
+        var iFoodLeft;
+        var iFoodTop;
+        do{
+            bFlag=false;
+            iFoodLeft=parseInt(Math.random()*50)*20;
+            iFoodTop =parseInt(Math.random()*25)*20;
+            for(var i=0;i<snakeBody.length;i++){
+                if(snakeBody[i].offsetLeft==iFoodLeft&&snakeBody[i].offsetTop==iFoodTop){
+                    bFlag=true;
+                }
+            }
+
+        }while(bFlag);
+       oFdiv=document.createElement('div');
+        oFdiv.style.left=iFoodLeft+'px';
+        oFdiv.style.top=iFoodTop+'px';
+        oFdiv.className='food-block';
+        oGround.appendChild(oFdiv);
+
+    }
+
+   createFood();
+
+
+
+    var next=null;
+    function move(){
+        var snakeHead=snakeBody[0];
+        if(direction=='right'){
+            next={
+                left:snakeHead.offsetLeft+20,
+                top:snakeHead.offsetTop
+            }
+        }else if(direction=='left'){
+            next={
+                left:snakeHead.offsetLeft-20,
+                top:snakeHead.offsetTop
+            }
+        }else if(direction=='top'){
+            next={
+                left:snakeHead.offsetLeft,
+                top:snakeHead.offsetTop-20
+            }
+        }else if(direction=='down'){
+            next={
+                left:snakeHead.offsetLeft,
+                top:snakeHead.offsetTop+20
+            }
+        }
+        if(oFdiv.offsetLeft==next.left&&oFdiv.offsetTop==next.top){
+            oFdiv.className='snake-block';
+
+            snakeBody.unshift(oFdiv);
+            createFood()
+
+        }else{
+            var oDiv=snakeBody.pop();
+            oDiv.style.left=next.left+'px';
+            oDiv.style.top=next.top+'px';
+            snakeBody.unshift(oDiv);
+        }
+
+        for(var i=1;i<snakeBody.length;i++){
+            snakeHead=snakeBody[0];
+            if(snakeHead.offsetLeft==snakeBody[i].offsetLeft&&snakeHead.offsetTop==snakeBody[i].offsetTop){
+                bDie=true;
+                alert('Game Over');
+                clearInterval(timer)
+            }
+        }
+        if(snakeHead.offsetLeft<0 || snakeHead.offsetLeft > 980 ||
+                snakeHead.offsetTop<0 || snakeHead.offsetTop > 480){
+            bDie=true;
+            alert('Game Over');
+            clearInterval(timer)
+        }
+    }
+
+
+
+    var timer=setInterval(move,200);
+
+
+
+    document.onkeydown=function(e){
+        e=e||window.event;
+        var kc= e.which|| e.keyCode;
+        if(kc==37&&direction!='right'){
+            direction='left'
+        }
+        if(kc==38&&direction!='down'){
+            direction='top'
+        }
+        if(kc==39&&direction!='left'){
+            direction='right'
+        }
+        if(kc==40&&direction!='top'){
+            direction='down'
+        }
+    }
+</script>
+</body>
+</html>
