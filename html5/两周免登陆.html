@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form id="form" action="index.php">
+    用户名：<input id="username" type="text"/></br></br>
+    密码：<input id="password" type="text"/></br></br>
+    两周免登陆<input id="check" type="checkbox"/>
+    <input id="btn" type="submit"/>
+</form>
+<script>
+    var oForm1=document.getElementById('form');
+    var oUserName=document.getElementById('username');
+    var oPwd=document.getElementById('password');
+    var oCheck=document.getElementById('check');
+    var oBtn=document.getElementById('btn');
+
+    function setCookie(key,value,day) {
+        var str = key + "=" + value + ";";
+        if (day) {
+            var date = new Date();
+            date.setDate(date.getDate() + day);
+            str += 'expires=' + date;
+        }
+        document.cookie = str;
+    }
+//    console.log(getCookie('name'));
+    function getCookie(key){
+        var str=document.cookie;
+        var arr=str.split('; ');
+        for(var i=0;i<arr.length;i++){
+            var arr1=arr[i].split('=');
+            if(arr1[0]==key){
+                return arr1[1]
+            }
+        }
+    }
+           oForm1.onsubmit=function(){
+               if(oCheck.checked){
+                   var name=oUserName.value;
+                   var pwd=oPwd.value;
+                   setCookie('name',name,14);
+                   setCookie('password',pwd,14)
+               }
+
+           };
+        var name=getCookie('name');
+        var psd=getCookie('password');
+        if(name&&psd){
+            oUserName.value=name;
+            oPwd.value=psd;
+            oForm1.submit();
+        }
+//    oForm1.onsubmit = function(){
+//        if(oCheck.checked){
+//            var name = oUserName.value;
+//            var pwd = oPwd.value;
+//            setCookie('name',name,14);
+//            setCookie('password',pwd,14);
+//
+//        }
+//    }
+//    var name = getCookie('name');
+//    var psd = getCookie('password');
+//    if(name && psd){
+//        oUserName.value = name;
+//        oPwd.value = psd;
+//        oForm1.submit();
+//    }
+
+</script>
+</body>
+</html>

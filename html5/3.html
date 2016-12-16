@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+   var obj={
+       name:'zhuangsan',
+       age:15,
+       father:{
+           name:'lisi',
+           age:45
+       }
+   } ;
+//   for(p in obj){
+//       console.log(obj[p]);
+//   }
+//     var obj='{"name":"zhangsan","age":"14"}'
+//   console.log(JSON.parse(obj));
+//var a='alert("aaa")';
+//eval(a);
+//   console.log(JSON.stringify(obj))
+//       var obj1=obj;
+//   obj.name='sf';
+//      console.log(obj1.name)
+//   var obj1=obj;
+   var obj1=clone(obj);
+   obj.father.name='dfs';
+   console.log(obj1.father.name);
+
+
+//
+    function clone(obj) {
+        var obj1 = {};
+        for (p in obj) {
+
+            if(typeof(obj[p]) =='object'){
+                obj1[p]=clone(obj[p])
+            }else{
+                obj1[p]=obj[p];
+            }
+
+        }
+        return obj1;
+        }
+
+
+
+</script>
+</body>
+</html>

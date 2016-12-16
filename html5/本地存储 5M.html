@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    sessionStorage.name='zhangsan';/*浏览器关闭就没有*/
+    localStorage.name='lisi';/*一直都存在，除非强制清楚*/
+    sessionStorage.setItem('age',14);
+    console.log(sessionStorage.getItem('age'));
+    sessionStorage.removeItem('age');
+//    sessionStorage.clear();
+
+</script>
+</body>
+</html>
