@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title></title>
+    <link rel="stylesheet" href="css/css1.css"/>
+</head>
+<body>
+<script>
+    function isMobile(){
+        if(/mobile|Android/ig.test(navigator.userAgent)){
+               return true;
+        }
+        return false;
+    }
+    var script=document.createElement('script');
+    script.src=isMobile()?'js/zepto.min.js':'js/jquery-1.12.4.js';
+    document.body.appendChild(script);
+    script.onload=function(){
+        var indjs=document.createElement('script');
+        indjs.src='js/index.js';
+        document.body.appendChild(indjs);
+    }
+</script>
+<script></script>
+<div id="header">
+<div id="menu">
+    <div id="a-menu">
+        <img src="images/menu_icon.svg" alt=""/>
+        <span>菜单</span>
+    </div>
+
+</div>
+    <div id="home">
+        <img src="images/logo.svg" />
+    </div>
+    <div id="register">
+        <div id="a-register">
+            <span>星享俱乐部</span>
+            <div><a href="#">登录</a><span>或</span><a href="#">注册</a></div>
+        </div>
+
+    </div>
+</div>
+<div id="christmas">
+    <img id="img1" src="images/kv-desktop-cn-20161027171806.jpg" />
+    <img id="img2" src="images/kv-mobile-cn-20161027171809.jpg" alt=""/>
+</div>
+<div id="card">
+    <img src="images/rewards.jpg" />
+</div>
+<div id="club">
+
+        <h1>星享俱乐部</h1>;
+        <p>开启您的星享之旅，星星越多、会员等级越高、好礼越丰富</p>;
+
+
+    <div class="btns">
+        <a href="#">登录</a>
+        <a href="#" >注册</a>
+    </div>
+</div>
+<div id="load">
+   <div class="c-text">
+       <div class=" c-box">
+           <h3>星巴克中国官方应用</h3>
+           <p>更新或下载全新星巴克中国官方APP，开启更便捷的星巴克体验。将新购买的星礼卡轻松关联至您的账户，即时通过手机进行移动支付，查看消费记录，管理卡片。</p>
+           <div id="down" class="btns">
+               <a href="#">IOS下载</a>
+               <a href="#">ANDROID下载</a>
+           </div>
+       </div>
+   </div>
+    <img id="c-Img" src="images/mobile-app-20160705111504.png" alt=""/>
+    <div id="c-load" class="btns">
+        <a href="#">下载应用</a>
+    </div>
+   
+</div>
+<div id="photo">
+<div id="left">
+    <div class="b-text">
+        <div class="b-box">
+            <h2>星巴克天猫旗舰店销售供应中</h2>
+            <p>随时随地来一杯手中心意</p>
+        </div>
+    </div>
+
+
+</div>
+<div id="right">
+    <div class="p-text">
+        <div class="p-box">
+            <h2>星巴克天猫旗舰店销售供应中</h2>
+            <p>随时随地来一杯手中心意</p>
+        </div>
+    </div>
+
+</div>
+</div>
+  <div id="slide">
+      <div class="slide-box">
+          <ul id="content-img">
+              <li><img src="images/img1.jpeg" /></li>
+              <li><img src="images/img2.jpeg" /></li>
+              <li><img src="images/img3.jpg" /></li>
+              <li><img src="images/img4.jpg" /></li>
+              <li><img src="images/img5.jpg" /></li>
+              <li><img src="images/img6.jpg" /></li>
+              <li><img src="images/img7.jpg" /></li>
+              <li><img src="images/img1.jpeg" /></li>
+          </ul>
+      </div>
+
+  </div>
+<div id="tab">
+    <span></span>
+    <span></span>
+    <span class="hide three"></span>
+    <span class="hide four"></span>
+</div>
+
+<div id="floor">
+    <div id="container">
+        <div class="picture">
+            <img src="images/homepage-reserve.png"/>
+        </div>
+        <div class="word">
+            <div class="p-word">
+                <h3>我 们 优 质 的 咖 啡 产 品</h3>
+                <p>我们持续在全世界各地寻找优质而稀少的咖啡豆，我们喜爱与您分享我们的新发现。我们在星巴克位于总部西雅图的星巴克臻选™咖啡烘焙工坊及品鉴馆为您精心烘焙星巴克臻选™咖啡。</p>
+            </div>
+            <div class="p-btns">
+                <a href="#">了解更多</a>
+                <a href="#">在这里购买</a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

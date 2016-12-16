@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        h3{
+            width: 960px;
+            height: 80px;
+            background: #ccc;
+            text-align: center;
+            line-height: 80px;
+            margin: 20px auto;
+        }
+        #footer{
+            clear: both;
+        }
+        #content{
+            width: 960px;
+            height: 480px;
+            margin: 0 auto;
+        }
+        #left{
+            width: 630px;
+            height: 480px;
+            background: red;
+            float: left;
+        }
+        #right{
+            width: 300px;
+            height: 480px;
+            background: deepskyblue;
+            float: right;
+        }
+        #right,#left{
+            display: table;
+        }
+        #left p,#right p{
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+        #img{
+            width: 960px;
+
+            margin: 0 auto;
+        }
+        #img img{
+            width: 960px;
+
+        }
+        @media (max-width: 960px) {
+            h3{
+                width: 100%;
+            }
+            #content{
+                width: 100%;
+            }
+            #left{
+                width: 67%;
+            }
+            #right{
+                width: 30%;
+            }
+            #img{
+                width: 100%;
+            }
+            #img img{
+                width: 100%;
+                max-width: 100%;/*相当于自身的放大倍数，限定放大倍数，阻止无线放大*/
+            }
+        }
+        @media (max-width: 480px) {
+            #content{
+                width: 100%;
+            }
+            #left,#right{
+                width: 100%;
+                /*float: none;*/
+            }
+        }
+    </style>
+</head>
+<body>
+<h3 id="header">页头</h3>
+<h3 id="tittle">标题</h3>
+<div id="img">
+    <img src="1.jpg" alt=""/>
+</div>
+<div id="content">
+    <div id="left">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sem erat, egestas quis luctus ut, rhoncus vitae risus. Integer venenatis libero sit amet sapien dictum, quis bibendum mi volutpat. Cras pretium quam quis magna facilisis, eget feugiat nisi lacinia.</p>
+    </div>
+    <div id="right">
+        <p>Donec dolor arcu, interdum sed turpis faucibus, placerat ultricies felis. Donec pulvinar gravida rhoncus. Suspendisse vestibulum est eget dolor lobortis.</p>
+    </div>
+</div>
+<h3 id="footer">页脚</h3>
+</body>
+</html>

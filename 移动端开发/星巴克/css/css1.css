@@ -1,0 +1,502 @@
+*{
+    margin:0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    display: block;
+}
+body{
+    font-family: AvenirRoman, HelveticaNeue-Light, Helvetica Neue, arial, Hiragino Sans GB, ¶¬ÇàºÚÌå, Microsoft YaHei New, Microsoft Yahei, Î¢ÈíÑÅºÚ, ËÎÌå, SimSun, STXihei, »ªÎÄÏ¸ºÚ, sans-serif;
+    font-weight: 400;
+}
+img{
+    border: none;
+    display: block;
+}
+
+
+
+
+#header{
+    width: 100%;
+    height: 100px;
+    position: relative;
+    display:-webkit-flex;
+}
+#menu{
+    -webkit-flex-grow:1
+
+}
+#a-menu{
+
+    padding: 20px 30px;
+}
+#menu span{
+    margin:4px 0 0 3px;
+    display: inline-block;
+    font-size: 12px;
+}
+#home{
+    -webkit-flex-grow:1
+}
+#home img{
+    margin: 10px auto;
+    width: 80px;
+    height:80px;
+}
+#register{
+    -webkit-flex-grow:1
+
+}
+#a-register a{
+    display: inline-block;
+    color:#a98e67;
+    font-size: 14px;
+    font-weight: 700;
+}
+#a-register{
+
+    text-align: right;
+    padding: 20px 30px 0 0;
+}
+
+
+
+
+
+#christmas{
+    width: 100%;
+}
+#img1{
+    width: 100%;
+}
+#img2{
+    display: none;
+}
+#card{
+    width: 100%;
+    overflow: hidden;
+}
+#card img{
+    width: 100%;
+    height: auto;
+}
+#club{
+
+    padding: 90px 35px;
+    background: #202020;
+    text-align: center;
+
+}
+
+#club h1{
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 38px;
+    color: #fffffe;
+    margin:0 0 8px;
+}
+#club p{
+    font-size: 18px;
+    line-height: 32px;
+    color: #999;
+
+}
+.btns{
+    margin-top: 55px;
+}
+.btns a{
+    display: inline-block;
+    border: 3px solid #a98167;
+    color: #a98167;
+    padding: 20px 40px;
+    margin-right: 30px;
+}
+.btns a:hover{
+    color:#ffe;
+    background: #a98e67;
+}
+
+
+
+
+
+#load{
+position: relative;
+    background: #e0e0e0;
+}
+.c-text{
+  width: 1130px;
+    margin:0 auto;
+
+}
+.c-box{
+    width: 55%;
+    padding: 210px 0 ;
+
+}
+.c-box h3{
+    color:#a98e67;
+    font-size:12px;
+    font-weight: 900;
+    font-family: AvenirBlack, 'HelveticaNeue-Light', 'Helvetica Neue', arial, "Hiragino Sans GB", "¶¬ÇàºÚÌå", "Microsoft YaHei New", "Microsoft Yahei", "Î¢ÈíÑÅºÚ", ËÎÌå, SimSun, STXihei, "»ªÎÄÏ¸ºÚ", sans-serif;
+    margin-bottom: 15px;
+}
+.c-box p{
+    font-size: 26px;
+    line-height: 40px;
+    color: #3d3d3d;
+    margin-bottom: 130px;
+}
+#down a{
+    padding: 12px 40px;
+    margin: 0 20px 0 0;
+}
+#c-Img{
+    width: 47%;
+    position: absolute;
+    right: 0;
+    bottom: 80px;
+}
+#c-load{
+    display: none;
+}
+
+
+
+
+
+#photo{
+    overflow: hidden;
+}
+#left,#right{
+    float:left;
+    position: relative;
+    display: table;
+}
+#left{
+    width: 50%;
+    padding-top: 50%;
+    height: 0;
+   background:url("../images/homepage-grid.jpg") center no-repeat;
+    background-size: cover;
+}
+#right{
+    width: 50%;
+    height: 0;
+    padding-top: 50%;
+    background:url(../images/20e42950-aa53-11e6-9345-bca7c77dab11.jpeg) center no-repeat ;
+    background-size: cover;
+}
+#left .b-text{
+    display: table;
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+}
+#left .b-box{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+
+}
+#right .p-text{
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+.p-box{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+#content{
+    height: 280px;
+}
+#content li{
+    float:left;
+    width: 280px;
+    height: 280px ;
+}
+#content img{
+    width: 280px;
+}
+
+
+/*slide start*/
+#slide{
+    padding: 80px 10px 0 10px;
+}
+.slide-box{
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    position: relative;
+}
+#content-img{
+    width: 2320px;
+    height: 280px;
+    position: absolute;
+}
+#content-img li{
+    width: 280px;
+    height: 280px;
+    float: left;
+    margin-right: 10px;
+}
+#content-img li img{
+    width: 100%;
+    height: 100%;
+}
+#tab{
+  text-align: center;
+    margin-top: 50px;
+}
+#tab span{
+    width: 10px;
+    height: 10px;
+    background: #8f8f8f;
+    border-radius: 5px;
+    display: inline-block;
+}
+#tab span.hide{
+    display: none;
+}
+/*slide end*/
+/*floor start*/
+#floor{
+
+    padding: 40px 0;
+    background: #060608;
+    overflow: hidden;
+
+}
+#container{
+    width: 1140px;
+    height: 528px;
+    display:table;
+    margin: 0 auto;
+}
+.picture{
+    float: left;
+    width: 50%;
+    height: 100%;
+    /*height: 528px;*/
+    /*margin: 30px 0 30px 100px;*/
+    /*width: 50%;*/
+
+}
+.picture img{
+    width: 100%;
+
+}
+.word{
+   width: 50% ;
+    height: 100%;
+    float: right;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    /*margin: 80px 0 80px 0;*/
+    /*display: table;*/
+}
+
+.word .p-word{
+
+    padding: 80px 0 80px 0;
+}
+
+.word h3{
+    color: #a98e67;
+    font-size: 13px;
+    font-weight: 900;
+    margin-bottom: 20px;
+
+}
+.word p{
+    font-size: 26px;
+    color: #707070;
+    overflow-wrap: break-word;
+}
+.p-btns{
+
+}
+.p-btns a{
+    display: inline-block;
+    border: 2px solid #a98167;
+    color: #a98167;
+    padding: 20px 30px;
+    margin-right: 30px;
+}
+.p-btns a:hover{
+    color:#ffe;
+    background: #a98e67;
+}
+
+/*floor end*/
+@media (max-width: 1200px){
+    .c-text{
+        width: 918px;
+    }
+}
+@media (max-width: 1159px) {
+    #tab span.three{
+        display: inline-block;
+    }
+   #container{
+       width: 970px;
+   }
+}
+@media (max-width: 869px) {
+    #tab span.four{
+        display: inline-block;
+    }
+}
+@media (max-width: 991px) {
+    .c-text{
+        width: 720px;
+    }
+    #img1{
+        display: none;
+    }
+    #img2{
+        display: block;
+        width: 100%;
+    }
+    #container{
+        width: 750px;
+        height: 623px;
+    }
+    #container .picture{
+        width: 65%;
+
+    }
+    #container .word{
+    width: 35%;
+        /*padding: 40px 30px 40px 100px;*/
+    }
+    #container .p-word{
+        padding: 20px 20px;
+    }
+
+    #container .p-btns a{
+        display: block;
+        border: 2px solid #a98167;
+        color: #a98167;
+        margin: 0 auto;
+        font-size: 11px;
+        width: 30%;
+        padding: 20px 50px;
+    }
+
+    #container .p-btns a:nth-child(2){
+        margin-top: 10px;
+    }
+}
+@media (max-width: 767px) {
+    #left,#right{
+        float: none;
+        width: 100%;
+        padding-top: 100%;
+    }
+    #register span,a{
+        font-size: 12px;
+    }
+    #card img{
+        height: 135px;
+        width: auto;
+    }
+    #club{
+        padding: 50px 35px;
+    }
+    .btns a{
+        padding: 14px 0;
+        width: 100%;
+        margin: 0;
+    }
+    .btns a:nth-child(2){
+        margin-top: 15px;
+    }
+
+
+
+
+    #load{
+       padding: 0 30px 80px 30px;
+    }
+    .c-text{
+        width: 100%;
+    }
+    .c-box{
+        padding: 80px 0 0 0;
+        width: 100%;
+
+    }
+    .c-box p{
+        margin-bottom: 0;
+    }
+    #down{
+        display: none;
+    }
+    #c-Img{
+        position: static;
+        float: right;
+        width: 90%;
+    }
+    #c-load {
+        display: block;
+        clear:both;
+    }
+    #c-load a{
+        padding: 14px 10%;
+        width: 20%;
+        text-align: center;
+    }
+    #container{
+        width: 90%;
+height: auto;
+
+    }
+    #container .picture{
+        float: none;
+        display: block;
+        width: 100%;
+
+    }
+    #container .picture img{
+        width: 100%;
+    }
+    #container .word{
+        float: none;
+        display: block;
+        width: 100%;
+
+    }
+    #container .p-btns a{
+        width: 100%;
+        margin: 0;
+        padding: 14px 0;
+    }
+}
+@media(max-width: 400px) {
+    #home img{
+        width: 50%;
+        height: 50%;
+    }
+    #a-register{
+        padding-bottom: 10px;
+    }
+    #header{
+        width:100%;
+        height: auto;
+    }
+}
