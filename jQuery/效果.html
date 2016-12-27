@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<button id="btn1">hide</button>
+<button id="btn2">show</button>
+<button id="btn3">toggle</button>
+<button id="btn4">fadein</button>
+<button id="btn5">fadeout</button>
+<button id="btn6">slidedown</button>
+<button id="btn7">slideup</button>
+<button id="btn8">animate</button>
+<div id="div1">
+
+</div>
+<script src="jquery-1.12.4.js"></script>
+<script>
+    $(function(){
+      var  $div1=$('#div1');
+            $('#btn1').on('click',function(){
+            $div1.hide(5000);
+                });
+            $('#btn2').on('click',function(){
+                $div1.show('fast');
+            });
+            $('#btn3').on('click',function(){
+                $div1.toggle();
+            });
+                $('#btn4').on('click',function(){
+                     $div1.fadeIn();
+                });
+                $('#btn5').on('click',function(){
+                    $div1.fadeOut();
+                });
+                $('#btn6').on('click',function(){
+                    $div1.slideDown(5000);
+                });
+             $('#btn7').on('click',function(){
+              $div1.slideUp();
+              });
+        $('#btn8').on('click',function(){
+            $div1.animate({
+                width:400,
+            height:400
+            });
+        });
+
+    })
+</script>
+</body>
+</html>

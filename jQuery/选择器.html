@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="ul1">
+    <li>001</li>
+    <li>002</li>
+    <li>003</li>
+</ul>
+<ul>
+    <li>001</li>
+    <li>002</li>
+    <li>003</li>
+</ul>
+</body>
+<script src="jquery-1.12.4.js"></script>
+<script>
+//    $(function() {
+//        var oUl = document.getElementById("ul1");
+//        var aLi = oUl.getElementsByTagName("li");
+////    $('ul li:first').css('background','red');
+//        $("ul li:first").css("background", "red");
+//    }
+//$(function(){
+//    var oUl = document.getElementById("ul1");
+//    var aLi = oUl.getElementsByTagName("li");
+//
+//})
+$("ul li:nth-child(even)").css("background","red");
+
+</script>
+</html>
