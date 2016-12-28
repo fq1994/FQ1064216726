@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Language" content="zh-CN">
+  <title>Johnny的博客 - SYSIT个人博客</title>
+      <link rel="stylesheet" href="/stylesheets/space2011.css" type="text/css" media="screen">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.css" media="screen">
+   <style type="text/css">
+    body,table,input,textarea,select {font-family:Verdana,sans-serif,宋体;}	
+  </style>
+</head>
+<body>
+<!--[if IE 8]>
+<style>ul.tabnav {padding: 3px 10px 3px 10px;}</style>
+<![endif]-->
+<!--[if IE 9]>
+<style>ul.tabnav {padding: 3px 10px 4px 10px;}</style>
+<![endif]-->
+<div id="OSC_Screen"><!-- #BeginLibraryItem "/Library/OSC_Banner.lbi" -->
+<%include header.ejs%>
+	<div id="OSC_Content">
+<div id="AdminScreen">
+
+  <%include left.ejs%>
+    <div id="AdminContent">
+<div class="MainForm BlogCommentManage">
+  <h3>共有 3 篇博客评论，每页显示 20 个，共 1 页</h3>
+  <ul id="comment">
+	  <%
+	  for(var i=0;i<comments.length;i++){
+	  %>
+	  <li id="aaa" class="<%=i%>" value="<%=comments[i].comm_id%>">
+		  <span class="portrait"><a href="#" target="_blank"><img src="/images/portrait.gif" alt="Johnny" title="Johnny" class="SmallPortrait" user="154693" align="absmiddle"></a></span>
+		<span class="comment">
+		<div class="user" name="user"><b><%=comments[i].username%></b> 评论了 <a href="/viewPost_comment" target="_blank"><%=comments[i].title%></a></div>
+		<div class="content" name="content"><p><%=comments[i].content%></p></div>
+		<div class="opts">
+			<span style="float:right;">
+			<a href="javascript:delete_c_by_id(24027,154693,261665734)" id="delete">删除</a> |
+			<a href="javascript:delete_c_by_user(154693)">删除此人所有评论</a>
+			</span>
+			2011-06-18 00:37
+		</div>
+		</span>
+
+	  <%
+	  }
+	   %>
+
+
+
+		<div class="clear"></div>
+	</li>
+
+		<div class="clear"></div>
+	</li>
+	  </ul>
+</div>
+</div>
+	<div class="clear"></div>
+</div>
+
+</div>
+	<div class="clear"></div>
+	<div id="OSC_Footer">© 赛斯特(WWW.SYSIT.ORG)</div>
+</div>
+<script src="/javascripts/jquery-1.11.3.min.js"></script>;
+<script>
+	$(function(){
+
+//
+		$('#delete').on('click',function(){
+		var $comment=$('#aaa');
+          var commentId='';
+
+		$comment.each(function(){
+			commentId=this.value;
+			console.log(commentId)
+		})
+          var commentId=commentId;
+//		console.log(commentId)
+			$.get('/deleteComment',{commentId:commentId},function(data){
+          if(data=='success'){
+			  $('#aaa').remove();
+			  alert('删除成功')
+		  }else{
+			  alert('删除失败')
+		  }
+			},'text')
+		})
+	})
+</script>
+</body></html>
