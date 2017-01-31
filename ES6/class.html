@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+//    function User(name){
+//        this.name=name,
+//        this.sayHello=function(){
+//            console.log('hello')
+//        }
+//    }
+//    var u=new User('lisi');
+//    u.sayHello();
+//
+//
+//
+//    function Son(){
+//
+//    }
+//    Son.prototype=new User('zh');
+//    var son=new Son();
+//    son.sayHello();
+    class User{
+        constructor(name){
+           this.name=name
+        }
+        say(){
+            console.log(this.name)
+        }
+        static fn(){
+            console.log('haha')
+        }
+
+    }
+
+
+    var u=new User('LOL');
+           u.say();
+           User.fn();
+//    class Son extends User{
+//        constructor(name,age){
+//            super(name);
+//            this.age=age
+//        }
+//        eat(){
+//            console.log(this.age)
+//        }
+//    }
+//    var s=new Son('zhangsan',14);
+//s.say();
+//s.eat();
+
+</script>
+</html>

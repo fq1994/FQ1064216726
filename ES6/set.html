@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+//    var set=new Set();
+//    set.add(2);
+//    set.add(3);
+//    set.add(3);
+//    var keys=set.keys();
+//    for(var key of keys){
+//    console.log(key)
+//    }
+//    var values=set.values();
+//    for(var value of values){
+//        console.log(value)
+//    }
+//    var entries=set.entries();
+//    for(var entrie of entries){
+//        console.log(entrie[0])
+//    }
+       var arr=[1,2,3,4,5,3,5];
+
+    var set=new Set(arr);
+   var values=set.values();
+var newArr=[];
+for(var v of values){
+    newArr.push(v);
+}
+    console.log(newArr);
+</script>
+</html>
