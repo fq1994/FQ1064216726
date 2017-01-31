@@ -1,0 +1,46 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #ccc;
+  font-size: 10px;
+}
+body div {
+  color: #fff;
+  border: 2px solid #ddd;
+}
+
+div {
+  color: #ccc;
+  font-size: 10px;
+
+}
+
+.background {
+  font-size: 10px;
+  background: #ccc;
+}
+
+.a, .c {
+  border: 1px solid #eee;
+  color: #aaa;
+}
+
+/*鍝堝搱*/
+.dd, .ee {
+  width: 20px;
+  height: 30px;
+}
+
+.dd {
+  width: 200px;
+}
+
+.ff {
+  width: 50px;
+}
+
+/*# sourceMappingURL=text.css.map */

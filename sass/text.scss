@@ -1,0 +1,53 @@
+@import "text2";
+@charset "UTF-8";
+$color:#ccc;
+$font:10px;
+$font:20px !default;
+$bg:background;
+body{
+	#{$bg}:$color;
+	font-size: $font;
+	div{
+		color: #fff;
+		border: 2px solid #ddd;
+	}
+}
+div{
+	color:$color;
+	font-size: $font;
+	background:url('image/#{$bg}.png');
+}
+.#{$bg}{
+	font-size:$font;
+	background:$color;
+}
+
+@mixin border($aa:#eee){
+	border: 1px solid $aa;
+}
+.a{
+	@include border();
+	color: #aaa;
+	
+}
+.c{
+	@extend .a
+}
+/*哈哈*/
+%ph{
+	width: 20px;
+	height: 30px;
+}
+.dd{
+	@extend %ph;
+	width: 200px;
+}
+.ee{
+	@extend %ph;
+}
+@function add($x,$y){
+	@return $x+$y;
+}
+.ff{
+	width: add(20px,30px)
+}
