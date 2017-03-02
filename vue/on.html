@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <!--当前点击{{message}}次-->
+    <!--<button v-on:click="message+=1">点击</button>-->
+    <button v-on:click="say('haha')">点击</button>
+
+</div>
+<script src="vue.js"></script>
+<script>
+    var vm=new Vue({
+        el:'#app',
+        data:{
+            message:0
+        },
+        methods:{
+//
+           greet:function(){
+        alert ('haha')
+           },
+            say:function(xxx){
+                alert(xxx+event.target.tagName)
+            }
+        }
+    })
+</script>
+</body>
+</html>

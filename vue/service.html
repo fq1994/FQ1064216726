@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            width:300px;
+            margin: 100px auto;
+        }
+        li{
+            list-style: none;
+            padding: 10px;
+            width:300px;
+            height:60px;
+            background: green;
+            line-height: 60px;
+            color:black;
+            margin-bottom:20px;
+        }
+        .red{
+            background: red;
+        }
+        .blue{
+            background: green;
+        }
+        span{
+            float: right;
+        }
+        /*#container{*/
+            /*margin: 100px auto;*/
+        /*}*/
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul >
+            <li v-for="item in items"  v-bind>
+                {{item.xx}}<span>{{item.yyy}}</span>
+            </li>
+            <li class="">total:   0.00</li>
+        </ul>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+
+        var vm=new Vue({
+            el:'#container',
+
+           data:{
+              objStyle:this.objStyle1,
+               flag:true,
+            items:[
+                {xx:'aaa',yyy:333.00,active:false},
+                {xx:'bbb',yyy:444.00,active:false},
+                {xx:'ccc',yyy:555.00,active:false},
+                {xx:'ddd',yyy:666.00,active:false},
+                {xx:'fff',yyy:777.00,active:false}
+            ],
+
+
+           },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

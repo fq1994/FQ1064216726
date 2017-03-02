@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table,td,th{
+            border: 1px  solid;
+            border-collapse: collapse;
+        }
+
+    </style>
+</head>
+<body>
+<table id="tab">
+<thead>
+<tr>
+    <th></th>
+    <th>商品图片</th>
+    <th>商品信息</th>
+    <th>赠送</th>
+    <th>商品金额</th>
+    <th>商品数量</th>
+    <th>总金额</th>
+    <th>编辑</th>
+</tr>
+</thead>
+<tbody>
+<tr v-for="product in productList">
+    <td><input  type="checkbox" @click="addCart(product)"/></td>
+    <td><img :src="product.productImg" width="100px"/></td>
+    <td v-text="product.productName"></td>
+    <td></td>
+    <td v-text="product.productPrice"></td>
+    <td>
+        <button @click="minusProduct(product)">-</button>
+        <input type="text" v-bind:value="product.productQuentity"/>
+        <button @click="addProduct(product)">+</button>
+    </td>
+    <td v-text="product.productPrice*product.productQuentity"></td>
+    <td><a href="#" @click="deleteProduct(product)">删除</a></td>
+</tr>
+</tbody>
+<tfoot>
+<td colspan="6"><input id="checkAll" type="checkbox" @click="checkAll"/>全选</td>
+<td>总计：{{totalPrice}}</td>
+<td><button>结账</button></td>
+</tfoot>
+</table>
+<script src="vue.min.js"></script>
+<script src="node_modules/axios/dist/axios.min.js"></script>
+<script>
+//    var oCheckAll=document.getElementById('checkAll');
+var vm=new Vue({
+    el:'#tab',
+    data:{
+        productList:[],
+        cartList:[],
+        totalPrice:0
+    },
+    computed:{
+
+    },
+    methods:{
+
+      addCart:function(product){
+          var index=this.cartList.indexOf(product);
+          if(index==-1){
+              this.cartList.push(product);
+          }else{
+              this.cartList.splice(index,1)
+          };
+         this.countTotalPrice()
+      },
+
+        addProduct:function(product){
+            product.productQuentity++;
+            this.countTotalPrice()
+        },
+        minusProduct:function(product){
+            if(product.productQuentity<=1){
+                product.productQuentity=1
+            }else{
+                product.productQuentity--;
+            }
+            this.countTotalPrice()
+        },
+        deleteProduct:function(product){
+            var index1=this.productList.indexOf(product);
+            var index2=this.cartList.indexOf(product);
+            this.productList.splice(index1,1);
+            if(index2>=0){
+                this.cartList.splice(index2,1);
+            };
+            this.countTotalPrice()
+        },
+//        checkAll:function(product){
+//            var _this=this;
+//            if(oCheckAll.checked){
+//                this.productList.forEach(function(product){
+//                    _this.totalPrice+=product.productPrice*product.productQuentity
+//                })
+//            }
+//
+//
+//
+//        },
+        countTotalPrice:function(){
+            var _this=this;
+            this.totalPrice=0;
+            this.cartList.forEach(function(product){
+                _this.totalPrice+=product.productPrice*product.productQuentity
+            })
+        }
+
+    },
+    mounted:function(){//页面初始化
+        var _this=this;
+        this.$nextTick(function () {
+            axios.get('cart.json').then(function(res){
+                _this.productList = res.data.result.productList;
+            });
+        })
+
+    }
+});
+
+</script>
+</body>
+</html>
