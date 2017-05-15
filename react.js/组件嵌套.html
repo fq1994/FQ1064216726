@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .aa{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script src="react-15.3.1/build/react.js"></script>
+<script src="react-15.3.1/build/react-dom.js"></script>
+<script src="react-15.3.1/browser.min.js"></script>
+<script type="text/babel">
+    var MessageBox=React.createClass({
+        render:function(){
+            return(
+                    <h1>Hello
+                    </h1>
+
+            )
+        }
+    })
+    var MessageBox2=React.createClass({
+        render:function(){
+            return(
+                            <div className='aa'>
+                            <MessageBox/>
+                            <h2>World</h2>
+                            </div>
+
+            )
+        }
+    })
+    ReactDOM.render(
+           <MessageBox2/>
+
+            ,
+            document.getElementById('container')
+    )
+</script>
+</body>
+</html>

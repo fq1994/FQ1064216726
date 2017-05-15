@@ -1,0 +1,38 @@
+ <!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="container"></div>
+<script src="react-15.3.1/build/react-with-addons.js"></script>
+<script src="react-15.3.1/build/react-dom.js"></script>
+<script src="react-15.3.1/browser.js"></script>
+<script type="text/babel">
+
+
+    var Comtent=React.createClass({
+        mixins:[React.addons.LinkedStateMixin],
+        getInitialState:function(){
+            return{
+                msg:""
+            };
+        },
+        render:function(){
+            return(
+                    <div>
+                    <input type="text" valueLink={this.linkState('msg')}/>
+                            <h1>{this.state.msg}</h1>
+                    </div>
+            );
+        }
+    });
+    ReactDOM.render(
+            <Comtent/>,
+    document.getElementById('container')
+    )
+
+</script>
+</body>
+</html>
